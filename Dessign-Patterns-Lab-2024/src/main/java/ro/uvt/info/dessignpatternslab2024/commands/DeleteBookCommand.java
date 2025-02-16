@@ -2,7 +2,7 @@ package ro.uvt.info.dessignpatternslab2024.commands;
 
 import ro.uvt.info.dessignpatternslab2024.services.BookService;
 
-public class DeleteBookCommand implements Command {
+public class DeleteBookCommand extends SynchronousCommand {
     private final BookService bookService;
     private final int bookId;
 
@@ -12,7 +12,7 @@ public class DeleteBookCommand implements Command {
     }
 
     @Override
-    public void execute() {
+    protected void executeCommand() {
         bookService.deleteBook(bookId);
     }
 }

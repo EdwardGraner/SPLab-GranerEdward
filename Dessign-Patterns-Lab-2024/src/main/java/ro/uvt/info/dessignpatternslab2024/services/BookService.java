@@ -1,6 +1,9 @@
 package ro.uvt.info.dessignpatternslab2024.services;
 
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -18,4 +21,9 @@ public class BookService {
         books.remove(id);
         System.out.println("Book deleted with ID: " + id);
     }
+
+    public List<String> getAllBooks() {
+        return new ArrayList<>(books.values());
+    }
+
 }

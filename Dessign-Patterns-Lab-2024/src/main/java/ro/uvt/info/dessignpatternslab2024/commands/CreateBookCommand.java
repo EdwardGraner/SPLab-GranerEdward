@@ -2,7 +2,7 @@ package ro.uvt.info.dessignpatternslab2024.commands;
 
 import ro.uvt.info.dessignpatternslab2024.services.BookService;
 
-public class CreateBookCommand implements Command {
+public class CreateBookCommand extends AsynchronousCommand {
     private final BookService bookService;
     private final String bookTitle;
 
@@ -12,9 +12,7 @@ public class CreateBookCommand implements Command {
     }
 
     @Override
-    public void execute() {
+    protected void executeCommand() {
         bookService.createBook(bookTitle);
     }
 }
-
-//
