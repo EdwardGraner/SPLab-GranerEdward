@@ -107,6 +107,22 @@ public class BooksController {
         return ResponseEntity.ok(book);
     }
 
+    @DeleteMapping("/{bookId}/paragraphs/{paragraphId}")
+    public ResponseEntity<Book> removeParagraphFromBook(@PathVariable int bookId, @PathVariable int paragraphId) {
+        Book book = bookRepository.findById(bookId)
+                .orElseThrow(() -> new RuntimeException("Book not found"));
+
+        Paragraph paragraph = paragraphRepository.findById(paragraphId)
+                .orElseThrow(() -> new RuntimeException("Paragraph not found"));
+
+        book.getElements().remove(paragraph);
+        bookRepository.save(book);
+        paragraphRepository.delete(paragraph);
+
+        return ResponseEntity.ok(book);
+    }
+
+
 
 
 }
